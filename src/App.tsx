@@ -10,9 +10,8 @@ function App() {
   const [selectedImageList, setSelectedImageList] = useState<string[]>([]);
   const currentImageRef = useRef<HTMLImageElement>(null);
 
-  const mergeImage = (e : React.MouseEvent<HTMLElement>) => {
-    let imageTag = e.target as HTMLImageElement
-    let selectedImage = imageTag.src;
+  const mergeImage = (e : React.MouseEvent<HTMLImageElement>) => {
+    let selectedImage = e.currentTarget.src;
     console.log(selectedImage)
     if(selectedImageList.includes(selectedImage)) {
         let filtered = selectedImageList.filter(src => src !== selectedImage)
