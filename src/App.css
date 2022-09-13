@@ -1,0 +1,30 @@
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pickerList {
+  list-style:none;
+}
+
+.pickerList ul {
+  display: inline-block;
+  list-style:none;
+}
+
+.pickerList ul img {
+  width: 150px;
+  height: 150px;
+}
+
+#mergedImageWrapper{
+  width: 200px;
+  height: 200px;
+}
+
+#mergedImageWrapper img{
+  width: 100%;
+  height: 100%;
+}
