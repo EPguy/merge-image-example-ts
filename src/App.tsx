@@ -13,6 +13,7 @@ function App() {
   const mergeImage = (e : React.MouseEvent<HTMLElement>) => {
     let imageTag = e.target as HTMLImageElement
     let selectedImage = imageTag.src;
+    console.log(selectedImage)
     if(selectedImageList.includes(selectedImage)) {
         let filtered = selectedImageList.filter(src => src !== selectedImage)
         setSelectedImageList([...sortPriority(filtered)])
@@ -22,7 +23,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(selectedImageList)
     mergeImages([...selectedImageList]).then((data:string) => {
         if(currentImageRef.current != undefined) {
           currentImageRef.current.src = data;
@@ -37,9 +37,9 @@ function App() {
         { selectedImageList.length > 0 ? <img ref={currentImageRef} id="mergedImage"/> : null}
         </div>
         <li className="pickerList">
-          <ul onClick={mergeImage}><img src={Body}/></ul>
-          <ul onClick={mergeImage}><img src={Eyes}/></ul>
-          <ul onClick={mergeImage}><img src={Mouth}/></ul>
+          <ul><img onClick={mergeImage} src={Body}/></ul>
+          <ul><img onClick={mergeImage} src={Eyes}/></ul>
+          <ul><img onClick={mergeImage} src={Mouth}/></ul>
         </li>
       </div>
     </div>
