@@ -1,5 +1,6 @@
 import { useEffect,  useState, useRef } from 'react';
 import './App.css';
+import sortPriority from './utils/sortPriority';
 import mergeImages from 'merge-images';
 import Body from './assets/images/body.png';
 import Eyes from './assets/images/eyes.png';
@@ -14,13 +15,14 @@ function App() {
     let selectedImage = imageTag.src;
     if(selectedImageList.includes(selectedImage)) {
         let filtered = selectedImageList.filter(src => src !== selectedImage)
-        setSelectedImageList([...filtered])
+        setSelectedImageList([...sortPriority(filtered)])
     } else {
-      setSelectedImageList([...selectedImageList, selectedImage])
+      setSelectedImageList([...sortPriority([...selectedImageList, selectedImage])])
     }
   }
 
   useEffect(() => {
+    console.log(selectedImageList)
     mergeImages([...selectedImageList]).then((data:string) => {
         if(currentImageRef.current != undefined) {
           currentImageRef.current.src = data;
